@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<!-- saved from url=(0044)http://kenedict.com/networks/worldcup14/vis/ , thanks Andre!-->
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8" />
+    <title>Vis Network | Example Applications | World Cup Network</title>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+
+
+    <!--<script src="./WorldCup2014.js"></script>-->
+    <script src="./data.js"></script>
+
+    <style type="text/css">
+      #mynetwork {
+        width: 800px;
+        height: 800px;
+        
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2></h2>
+
+    
+    <div id="mynetwork"></div>
+
+    <script type="text/javascript">
+      var network;
+
+      function redrawAll() {
+        // remove positoins
+        
+
+        // create a network
+        var container = document.getElementById("mynetwork");
+        var data = {
+          nodes: nodes,
+          edges: edges,
+        };
+        var options = {
+          nodes: {
+            shape: "dot",
+            scaling: {
+              min: 10,
+              max: 30,
+            },
+            font: {
+              size: 12,
+              face: "Tahoma",
+            },
+          },
+          edges: {
+            width: 0.15,
+            color: { inherit: "from" },
+            smooth: {
+              type: "continuous",
+            },
+          },
+         
+          interaction: {
+            tooltipDelay: 200,
+            hideEdgesOnDrag: true,
+          },
+        };
+
+        // Note: data is coming from ./datasources/WorldCup2014.js
+        network = new vis.Network(container, data, options);
+      }
+
+      redrawAll();
+    </script>
+  </body>
+</html>
